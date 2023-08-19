@@ -76,6 +76,7 @@ main p
     text-align: center;
     position: absolute;
     width: 100%;
+    bottom: 5px;
     max-height: 200px;
     overflow-y: auto;
     color: #DDDDDD;
@@ -90,5 +91,27 @@ main p
   .sugestao-item:hover {
     background-color: #2d2d41;
   }
+  
+  .loader {
+    display: none;
+    position: absolute;
+    top: 46.5%;
+    left: 75%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid rgba(0, 0, 0, 0);
+    border-top: 4px solid #7d9bd6;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+    }
   
 
