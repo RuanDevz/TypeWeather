@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/estilos/styledashboard.css">
+    <title>Dash</title>
 </head>
 <body>
-    
+    <header>
+        <img src="Imagens/Home (1).png" alt="logo">
+        <input type="text" name="buscar" id="buscar" placeholder="Buscar Local">
+    </header>
+    <main>
+        <section class="type-background">
+            <div class="type-info-top">
+                <h1>Porto Alegre, RS</h1>
+                <p id="date"></p>
+            </div>
+            <div class="type-hour">
+                <p id="hours"></p>
+            </div>
+            <div class="type-info-bot">
+                <div>
+                    <h1>28°c</h1>
+                    <h2>26°c / 32°c</h2>
+                    <p>Poucas nuvens</p>
+                </div>
+                <div>
+                    <img src="Imagens/Previsão-Icons/Weather=Cloudy, Moment=Day.png" alt="Logo-previsão">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="type-more-infos">
+                <div id="infos" class="type-termic">
+                    <img src="Imagens/icons/Type=thermometer-simple-light.png" alt="Temperatura">
+                    <p>Sensação térmica</p>
+                    <p class="info-result">26°c</p>
+                </div>
+                <div id="infos" class="type-rain">
+                    <img src="Imagens/icons/Type=cloud-rain-light.png" alt="Chuva">
+                    <p>Probabilidade de chuva</p>
+                    <p class="info-result">8%</p>
+                </div>
+                <div id="infos" class="type-wind">
+                    <img src="Imagens/icons/Type=wind-light.png" alt="Vento">
+                    <p>Velocidade do Vento</p>
+                    <p class="info-result">8km/h</p>
+                </div>
+                <div id="infos" class="type-moisture">
+                    <img src="Imagens/icons/Type=drop-light.png" alt="Umidade">
+                    <p>Umidade do ar</p>
+                    <p class="info-result">40%</p>
+                </div>
+                <div id="infos" class="type-uv">
+                    <img src="Imagens/icons/Type=sun-dim-light.png" alt="índice UV">
+                    <p>Indice UV</p>
+                    <p class="info-result">5</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div>
+                <div>
+                    <h1>Ter</h1>
+                    <img src="" alt="tempo">
+                    <h2>32°c</h2>
+                </div>
+                <div>
+                    <h1>Ter</h1>
+                    <img src="" alt="tempo">
+                    <h2>32°c</h2>
+                </div>
+                <div>
+                    <h1>Ter</h1>
+                    <img src="" alt="tempo">
+                    <h2>32°c</h2>
+                </div>
+                <div>
+                    <h1>Ter</h1>
+                    <img src="" alt="tempo">
+                    <h2>32°c</h2>
+                </div>
+                <div>
+                    <h1>Ter</h1>
+                    <img src="" alt="tempo">
+                    <h2>32°c</h2>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="dashboard.js"></script>
 </body>
 </html>

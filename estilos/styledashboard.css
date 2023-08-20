@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+body{
+    background-color: #16161f;
+}
+
+header{
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 0px;
+    background-color: #16161f;
+}
+
+header input{
+    text-indent: 10px;
+    font-size: 1.2em;
+    width: 280px;
+    height: 60px;
+    border: none;
+    background-color: #1e1e29;
+    border-radius: 10px;
+    color: #7f7f98;
+
+}
+
+header input:focus{
+    border: none;
+    outline: 0;
+}
+
+.type-background{
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    width: 350px;
+    height: 320px;
+    background-repeat: no-repeat;
+   background: url("../Imagens/Tempos/Neve-Noite.png");
+   margin-bottom: 15px;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 10px; 
+}
+
+.info-result {
+    width: 100%; /* Ocupa toda a largura disponível */
+    text-align: right; /* Alinha o texto à direita */
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+    margin-right: 25px; /* Adiciona margem à esquerda */
+}
+
+
+.type-info-top h1{
+    color: #fff;
+    padding: 7px;
+}
+
+.type-info-top p{
+    color: #fafafa;
+    padding: 7px;
+    margin-bottom: 60px;
+}
+
+.type-info-bot{
+    display: flex;
+    gap: 90px;
+}
+
+.type-info-bot h1{
+    color: #fff;
+    font-size: 3em;
+    margin-bottom: 5px;
+    padding-left: 7px;
+}
+
+.type-info-bot h2,p{
+    color: #fff;
+    padding-left: 7px;
+}
+.type-hour{
+    position: relative;
+    top: -45%;
+    left: 85%;
+}
+
+.type-hour p{
+    font-size: 1.1em;
+}
+
+div#infos{
+    display: flex;
+    align-items: center;
+    padding: 20px 0px;
+    margin-left: 6px;
+    border-bottom: 1px solid #1c1c27;
+}
