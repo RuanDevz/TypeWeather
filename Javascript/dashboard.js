@@ -1,8 +1,4 @@
 
-
-//https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=99db18ed4405b31d392f6d9e808fe78f
-
-
 const hoursElement = document.getElementById("hours"); 
 const dateElement = document.getElementById("date"); 
 
@@ -36,5 +32,4 @@ const dateString = `${diaSemana}, ${diaMes} de ${mes} de ${ano}`;
 
 dateElement.textContent = dateString;
 
-// EXTRAÇÃO DE DADOS DA API
 
