@@ -115,5 +115,71 @@ main p
       transform: rotate(360deg);
     }
     }
+    
+    @media (min-width: 1024px) {
+
+      body
+      {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url("../Imagens/Background/Background\ Desktop.png");
+      }
+      .type-title
+      {
+        margin-top: 10px;
+      }
+
+      header img
+      {
+        margin-top: 10px;
+      }
+      .type-presentation
+      {
+        padding: 15px 0px;
+        font-size: 2em;
+      }
+      main p
+      {
+        font-size: 1em;
+      }
+      .loader
+      {
+        z-index: 9;
+      }
+
+      input#buscar
+      {
+        width: 500px;
+      }
+
+      main
+      {
+        display: block;
+        margin: 0 auto;
+      }
+
+      .sugestoes
+      {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        position: relative;
+        right: 4%;
+      }
+
+      .sugestao-item 
+      {
+        width:100%;
+      }
+      ::-webkit-scrollbar
+      {
+        display: none;
+      }
+    }
+    
   
 

@@ -53,54 +53,39 @@ input.addEventListener('input', () => {
     const sugestaoItem = document.createElement('div');
     sugestaoItem.innerText = estado;
     sugestaoItem.classList.add('sugestao-item');
-    sugestaoItem.addEventListener('click', () => {
+    sugestaoItem.addEventListener('click', async () => {
       input.value = estado;
       sugestoes.innerHTML = '';
+
+      const APIKey = "99db18ed4405b31d392f6d9e808fe78f";
+      const city = input.value;
+      const weatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
+
+      try {
+        ShowLoading();
+
+        const response = await fetch(weatherEndpoint);
+        const data = await response.json();
+
+        if (data.main) {
+          const temperature = data.main.temp;
+          const weatherDescription = data.weather[0].description;
+          const termic = document.getElementById("termic");
+          const rain = document.getElementById("rain");
+          const wind = document.getElementById("wind");
+          const umidify = document.getElementById("umidify");
+          const uv = document.getElementById("uv");
+
+          window.location.href = "clima.html";
+        }
+      } catch (error) {
+        console.error("Erro ao obter os dados do tempo:", error);
+      } finally {
+        HideLoading();
+      }
     });
     sugestoes.appendChild(sugestaoItem);
   });
 
   input.parentNode.appendChild(sugestoes);
-});
-
-document.addEventListener('click', event => {
-  if (!input.contains(event.target)) {
-    sugestoes.innerHTML = '';
-  }
-});
-
-
-
-input.addEventListener("input", async () => {
-  const APIKey = "99db18ed4405b31d392f6d9e808fe78f";
-  const city = input.value;
-  const weatherEndpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
-
-  try {
-    ShowLoading();
-
-    const response = await fetch(weatherEndpoint);
-    const data = await response.json();
-
-    // Aqui você pode continuar manipulando os dados da API
-    if (data.main) {
-      const temperature = data.main.temp;
-      const weatherDescription = data.weather[0].description;
-      const termic = document.getElementById("termic");
-      const rain = document.getElementById("rain");
-      const wind = document.getElementById("wind");
-      const umidify = document.getElementById("umidify");
-      const uv = document.getElementById("uv");
-
-      // Atualize os elementos no DOM com os valores obtidos da API
-
-      // Redirecione para a página de clima após obter os dados
-      window.location.href = "clima.html";
-    }
-
-  } catch (error) {
-    console.error("Erro ao obter os dados do tempo:", error);
-  } finally {
-    HideLoading();
-  }
 });
