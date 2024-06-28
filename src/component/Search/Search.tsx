@@ -5,12 +5,15 @@ import Button from "../Button/Button";
 
 const Search = () => {
   const [search, setSearch] = useState<string>("");
+  const [loading, setLoading] = useState(false)
 
-  const handleclick = (e: any) => {
-    e.preventDefault()
-    Weatherapi(search)
+  const handleclick = async (e: any) => {
+    e.preventDefault();
+    setLoading(true)
+    await Weatherapi(search)
       .then((getWeather) => {
         console.log(getWeather);
+        setLoading(false)
       })
       .catch((error) => {
         console.error("Erro ao buscar o clima:", error);
@@ -27,7 +30,12 @@ const Search = () => {
           id="Search"
         />
         <div className="mt-10 flex items-center justify-center">
-          <button onClick={handleclick} className="hover:brightness-110 hover:animate-pulse font-bold py-3 px-24 rounded-full bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white">Buscar</button>
+          <button
+            onClick={handleclick}
+            className="rounded-full bg-indigo-500 px-24 py-3 font-bold text-white shadow-lg shadow-indigo-500/50 hover:animate-pulse hover:brightness-110"
+          >
+            {loading ? 'Aguarda...': 'Buscar'}
+          </button>
         </div>
       </form>
     </div>
