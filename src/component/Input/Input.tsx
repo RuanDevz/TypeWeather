@@ -2,10 +2,13 @@ import React, { useState } from "react";
 
 type InputProps = {
   id: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  placeholder: string
 };
 
-const Input = ({ id }: InputProps) => {
-  const [inputValue, setInputValue] = useState("");
+const Input = ({ id, onChange, value, placeholder}: InputProps) => {
+  const [inputValue, setInputValue] = useState(value);
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,40 +16,41 @@ const Input = ({ id }: InputProps) => {
     setInputValue(value);
 
     const suggestions = [
-        "Porto Alegre - RS - Brasil",
-        "São Paulo - SP - Brasil",
-        "Rio de Janeiro - RJ - Brasil",
-        "Belo Horizonte - MG - Brasil",
-        "Salvador - BA - Brasil",
-        "Brasília - DF - Brasil",
-        "Curitiba - PR - Brasil",
-        "Fortaleza - CE - Brasil",
-        "Recife - PE - Brasil",
-        "Manaus - AM - Brasil",
-        "Belém - PA - Brasil",
-        "Goiânia - GO - Brasil",
-        "Florianópolis - SC - Brasil",
-        "Vitória - ES - Brasil",
-        "João Pessoa - PB - Brasil",
-        "Campo Grande - MS - Brasil",
-        "Cuiabá - MT - Brasil",
-        "Natal - RN - Brasil",
-        "Teresina - PI - Brasil",
-        "Aracaju - SE - Brasil",
-        "Porto Velho - RO - Brasil",
-        "Macapá - AP - Brasil",
-        "Palmas - TO - Brasil",
-        "Boa Vista - RR - Brasil",
+      "Porto Alegre",
+      "Sao paulo",
+      "Rio de Janeiro - RJ - Brasil",
+      "Belo Horizonte - MG - Brasil",
+      "Salvador - BA - Brasil",
+      "Brasília - DF - Brasil",
+      "Curitiba - PR - Brasil",
+      "Fortaleza - CE - Brasil",
+      "Recife - PE - Brasil",
+      "Manaus - AM - Brasil",
+      "Belém - PA - Brasil",
+      "Goiânia - GO - Brasil",
+      "Florianópolis - SC - Brasil",
+      "Vitória - ES - Brasil",
+      "João Pessoa - PB - Brasil",
+      "Campo Grande - MS - Brasil",
+      "Cuiabá - MT - Brasil",
+      "Natal - RN - Brasil",
+      "Teresina - PI - Brasil",
+      "Aracaju - SE - Brasil",
+      "Porto Velho - RO - Brasil",
+      "Macapá - AP - Brasil",
+      "Palmas - TO - Brasil",
+      "Boa Vista - RR - Brasil",
     ].filter((suggestion) =>
       suggestion.toLowerCase().includes(value.toLowerCase()),
     );
 
     setSuggestions(suggestions);
+    onChange(event); // Chama a função onChange passada como prop
   };
 
   const handleSuggestionClick = (value: string) => {
     setInputValue(value);
-    setSuggestions([]); 
+    setSuggestions([]);
   };
 
   return (
@@ -65,7 +69,7 @@ const Input = ({ id }: InputProps) => {
           {suggestions.map((suggestion, index) => (
             <li
               key={index}
-              className="cursor-pointer text-white font-normal px-4 py-2 hover:bg-[#464664]"
+              className="cursor-pointer px-4 py-2 font-normal text-white hover:bg-[#464664]"
               onClick={() => handleSuggestionClick(suggestion)}
             >
               {suggestion}
