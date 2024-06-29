@@ -3,23 +3,39 @@ import { Input } from "@chakra-ui/react";
 import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
 
+const isClimate = (data: any): data is Climate => {
+  return (
+    typeof data.name === "string" &&
+    typeof data.main === "object" &&
+    typeof data.main.temp === "number" &&
+    typeof data.main.temp_min === "number" &&
+    typeof data.main.temp_max === "number" &&
+    typeof data.main.humidity === "number" &&
+    Array.isArray(data.weather) &&
+    data.weather.length > 0 &&
+    typeof data.clouds === "object" &&
+    typeof data.clouds.all === "number" &&
+    typeof data.wind === "object" &&
+    typeof data.wind.speed === "number"
+  );
+};
+
 const Weather = () => {
   const { weatherData } = useContext(Context);
 
   console.log(weatherData);
 
-  if (!weatherData) {
-    return <div>Loading...</div>; // Pode adicionar um indicador de carregamento enquanto os dados estão sendo buscados
+  if (!isClimate(weatherData)) {
+    return <div>Loading...</div>;
   }
 
-  // Desestruturação das propriedades de weatherData
   const {
     name,
     main: { temp, temp_min, temp_max, humidity },
     weather,
     clouds: { all },
     wind: { speed },
-  } = weatherData as Climate;
+  } = weatherData;
 
   return (
     <div>
@@ -42,8 +58,8 @@ const Weather = () => {
         <p>Umidade: {humidity} %</p>
         <p>Nuvens: {all}%</p>
         <p>Vento: {speed} m/s</p>
-        {/* Exemplo de como acessar a descrição do clima (o primeiro item no array de weather) */}
-        {weather && weather.length > 0 && <p>Descrição: {weather[0].description}</p>}
+        <p>Descrição: {weather[0].description}</p>{" "}
+        {/* Exibindo a descrição do clima */}
       </div>
     </div>
   );
