@@ -19,6 +19,10 @@ import wind_light from '../../assets/wind_light.svg'
 
 
 const Weather = () => {
+
+
+  
+
   return (
     <div>
       <header className="mt-10 flex justify-around">

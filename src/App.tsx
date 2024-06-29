@@ -7,15 +7,10 @@ import React, {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import Weather from "./component/Weather/Weather";
-import Context from "./context/context";
+import Context, { City } from "./context/context";
 
 const App = () => {
-  type City = {
-    id: number;
-    nome: string;
-    country: string;
-    description: string
-  }
+
 
   const [cities, setCities] = useState<City[]>([]);
 

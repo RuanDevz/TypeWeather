@@ -5,7 +5,14 @@ export interface City {
   id: number;
   nome: string; 
   country: string;
-  description: string; 
+  description: string;
+  clouds: number
+  humidity: number,
+  temp: number
+  temp_max: number,
+  temp_min: number
+  speed: number
+
 }
 
 export interface ContextType {
