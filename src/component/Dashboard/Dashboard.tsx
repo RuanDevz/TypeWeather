@@ -7,7 +7,7 @@ import { Cityapi } from "../../api/CityApi";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { cities, setCities } = useContext(Context);
+  const {setCities } = useContext(Context);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -15,7 +15,6 @@ const Dashboard = () => {
       try {
         const response = await Cityapi();
         setCities(response);
-        console.log(response);
       } catch (error) {
         console.error("Erro ao buscar cidades:", error);
       }

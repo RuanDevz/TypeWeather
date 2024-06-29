@@ -1,27 +1,25 @@
+import React, { useContext } from "react";
 import { Input } from "@chakra-ui/react";
-import React from "react";
 import logo from "../../assets/img/LogoWeather.png";
-import ClearNight from "../Bg-Tempo-Limpo-Noite/ClearNight";
-import ClearDay from '../../assets/svg/clear_day.svg'
-import Cloudrainlight from '../../assets/svg/cloud_rain_light.svg'
-import Cloudy_day from '../../assets/cloudy_day.svg'
-import Cloudy_night from '../../assets/cloudy_night.svg'
-import drop_light from '../../assets/drop_light.svg'
-import few_clounds_day from '../../assets/few_clounds_day.svg'
-import few_clouds_night from '../../assets/few_clouds_night.svg'
-import rain_moment_day from '../../assets/rain_moment_day.svg'
-import snow_day from '../../assets/snow_day.svg'
-import snow_night from '../../assets/snow_night.svg'
-import storm_day from '../../assets/storm_day.svg'
-import sun_dim_light from '../../assets/sun_dim_light.svg'
-import thermometer_simple_light from '../../assets/thermometer_simple_light.svg'
-import wind_light from '../../assets/wind_light.svg'
-
+import Context, { Climate } from "../../context/context";
 
 const Weather = () => {
+  const { weatherData } = useContext(Context);
 
+  console.log(weatherData);
 
-  
+  if (!weatherData) {
+    return <div>Loading...</div>; // Pode adicionar um indicador de carregamento enquanto os dados estão sendo buscados
+  }
+
+  // Desestruturação das propriedades de weatherData
+  const {
+    name,
+    main: { temp, temp_min, temp_max, humidity },
+    weather,
+    clouds: { all },
+    wind: { speed },
+  } = weatherData as Climate;
 
   return (
     <div>
@@ -35,8 +33,17 @@ const Weather = () => {
           id="Search"
         />
       </header>
-      <div>
-        <ClearNight/>
+      <div className="text-white">
+        {/* Exemplo de como exibir as informações */}
+        <p>Cidade: {name}</p>
+        <p>Temperatura: {temp} °C</p>
+        <p>Temperatura Mínima: {temp_min} °C</p>
+        <p>Temperatura Máxima: {temp_max} °C</p>
+        <p>Umidade: {humidity} %</p>
+        <p>Nuvens: {all}%</p>
+        <p>Vento: {speed} m/s</p>
+        {/* Exemplo de como acessar a descrição do clima (o primeiro item no array de weather) */}
+        {weather && weather.length > 0 && <p>Descrição: {weather[0].description}</p>}
       </div>
     </div>
   );
