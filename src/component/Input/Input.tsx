@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Cityapi } from "../../api/CityApi";
 import Context from "../../context/context";
 
 type InputProps = {
@@ -12,22 +11,17 @@ type InputProps = {
 const Input = ({ id, onChange, value, placeholder }: InputProps) => {
   const [inputValue, setInputValue] = useState(value);
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const {cities, setCities} = useContext(Context)
+  const { cities } = useContext(Context);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setInputValue(value);
 
-    console.log(cities)
-
-    const suggestions = [
-      "Porto Alegre",
-      "Sao paulo",
-    ].filter((suggestion) =>
-      suggestion.toLowerCase().includes(value.toLowerCase()),
+    const filteredCities = cities.filter(city =>
+      city.nome.toLowerCase().includes(value.toLowerCase())
     );
 
-    setSuggestions(suggestions);
+    setSuggestions(filteredCities.map(city => city.nome));
     onChange(event);
   };
 
@@ -40,14 +34,14 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
     <div>
       <label htmlFor={id}></label>
       <input
-        placeholder="Buscar Local"
+        placeholder={placeholder}
         className="w-[311px] rounded-lg bg-[#1E1E29] px-1 py-3 indent-3 text-white focus:outline-none lg:w-[500px]"
         id={id}
         type="text"
         value={inputValue}
         onChange={handleInputChange}
       />
-      {suggestions.length > 0 && (
+      {suggestions.length >=3 && (
         <ul className="absolute left-0 right-0 z-10 mx-auto w-[311px] rounded-b-md bg-[#3B3B54] shadow-lg lg:w-[500px]">
           {suggestions.map((suggestion, index) => (
             <li

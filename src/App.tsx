@@ -7,27 +7,16 @@ import React, {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import Weather from "./component/Weather/Weather";
+import Context from "./context/context";
 
-// Definindo a interface da cidade
-interface City {
-  id: number;
-  name: string;
-  country: string;
-}
-
-interface ContextType {
-  cities: City[];
-  setCities: Dispatch<SetStateAction<City[]>>;
-}
-
-const initialContext: ContextType = {
-  cities: [],
-  setCities: () => {},
-};
-
-const Context = createContext<ContextType>(initialContext);
 
 const App = () => {
+  interface City {
+    id: number;
+    nome: string;
+    country: string;
+  }
+
   const [cities, setCities] = useState<City[]>([]);
 
   return (
