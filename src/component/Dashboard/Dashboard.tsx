@@ -28,7 +28,7 @@ const Dashboard = () => {
       <Header />
       <div className="mt-40 flex flex-col items-center justify-center">
         <Presentation />
-        <p className="text-[#696969] mt-10">Em caso de não localizar sua cidade, tente sem caracteres especiais</p>
+        <p className="text-[#696969] mt-10 text-center">Em caso de não localizar sua cidade, tente sem caracteres especiais</p>
         <Search />
       </div>
     </div>
