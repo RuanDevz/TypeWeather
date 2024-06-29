@@ -5,7 +5,7 @@ import Search from "../Search/Search";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="mt-0 lg:mt-20">
       <Header />
       <div className="mt-40 flex flex-col items-center justify-center">
         <Presentation />
