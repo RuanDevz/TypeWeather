@@ -9,12 +9,12 @@ import Dashboard from "./component/Dashboard/Dashboard";
 import Weather from "./component/Weather/Weather";
 import Context from "./context/context";
 
-
 const App = () => {
-  interface City {
+  type City = {
     id: number;
     nome: string;
     country: string;
+    description: string
   }
 
   const [cities, setCities] = useState<City[]>([]);

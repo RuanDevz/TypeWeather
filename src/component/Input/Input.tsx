@@ -17,11 +17,11 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
     const value = event.target.value;
     setInputValue(value);
 
-    const filteredCities = cities.filter(city =>
-      city.nome.toLowerCase().includes(value.toLowerCase())
+    const filteredCities = cities.filter((city) =>
+      city.nome.toLowerCase().includes(value.toLowerCase()),
     );
 
-    setSuggestions(filteredCities.map(city => city.nome));
+    setSuggestions(filteredCities.map((city) => city.nome));
     onChange(event);
   };
 
@@ -41,7 +41,7 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
         value={inputValue}
         onChange={handleInputChange}
       />
-      {suggestions.length >=3 && (
+      {suggestions.length > 0 && (
         <ul className="absolute left-0 right-0 z-10 mx-auto w-[311px] rounded-b-md bg-[#3B3B54] shadow-lg lg:w-[500px]">
           {suggestions.map((suggestion, index) => (
             <li
