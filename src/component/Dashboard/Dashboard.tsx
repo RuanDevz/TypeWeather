@@ -32,7 +32,7 @@ const Dashboard = () => {
     <div className="mt-0 lg:mt-20">
       <Header />
       <div className="mt-40 flex flex-col items-center justify-center">
-        {loading && <Loading/>}
+        {loading && <Loading>Cidades</Loading>}
         <Presentation />
         <p className="text-[#696969] mt-10 text-center">Em caso de não localizar sua cidade, tente sem caracteres especiais</p>
         <Search />

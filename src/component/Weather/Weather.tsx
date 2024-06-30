@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Input } from "@chakra-ui/react";
 import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
+import Loading from '../../component/Loading/Loading'
 
 const isClimate = (data: any): data is Climate => {
   return (
@@ -23,10 +24,24 @@ const isClimate = (data: any): data is Climate => {
 const Weather = () => {
   const { weatherData } = useContext(Context);
 
+  const date = new Date();
+  const Hour = date.getHours().toString().padStart(2, '0');
+  const Minutes = date.getMinutes().toString().padStart(2, '0');
+  const Time = `${Hour}:${Minutes}`;
+  const Day = date.getDay(); 
+  const Month = date.getMonth(); 
+  const Year = date.getFullYear();
+
+  const weekdays = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+  const weekdayName = weekdays[Day];
+
+  const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+  const monthName = months[Month];
+
   console.log(weatherData);
 
   if (!isClimate(weatherData)) {
-    return <div>Loading...</div>;
+    return <Loading>Previsões</Loading>;
   }
 
   const {
@@ -50,7 +65,8 @@ const Weather = () => {
         />
       </header>
       <div className="text-white">
-        {/* Exemplo de como exibir as informações */}
+        <p>{Time}</p>
+        <p>Data: {weekdayName}, {date.getDate()} de {monthName} de {Year}</p>
         <p>Cidade: {name}</p>
         <p>Temperatura: {temp} °C</p>
         <p>Temperatura Mínima: {temp_min} °C</p>
@@ -59,7 +75,6 @@ const Weather = () => {
         <p>Nuvens: {all}%</p>
         <p>Vento: {speed} m/s</p>
         <p>Descrição: {weather[0].description}</p>{" "}
-        {/* Exibindo a descrição do clima */}
       </div>
     </div>
   );

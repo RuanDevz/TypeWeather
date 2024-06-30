@@ -12,16 +12,15 @@ const Search = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { weatherData, setWeatherData } = useContext(Context);
+  const { setWeatherData } = useContext(Context);
 
   const handleclick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setLoading(true);
 
-    const sanitizedSearch = search.replace(/[^\w\s]/gi, "");
 
     try {
-      const getWeather: Climate[] = await Weatherapi(sanitizedSearch);
+      const getWeather: Climate[] = await Weatherapi(search);
       setWeatherData(getWeather);
       setLoading(false);
       navigate('/Weather');
