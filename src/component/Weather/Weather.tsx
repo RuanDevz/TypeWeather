@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 import { Input } from "@chakra-ui/react";
 import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
-import Loading from '../../component/Loading/Loading'
+import Loading from "../../component/Loading/Loading";
+import bg_clear_day from "../../assets/img/bg_clear_day.png";
+import bg_clody_night from "../../assets/img/bg_cloudy_night.png";
+import cloudy_night from "../../assets/svg/cloudy_night.svg";
+import { url } from "inspector";
 
 const isClimate = (data: any): data is Climate => {
   return (
@@ -25,17 +29,38 @@ const Weather = () => {
   const { weatherData } = useContext(Context);
 
   const date = new Date();
-  const Hour = date.getHours().toString().padStart(2, '0');
-  const Minutes = date.getMinutes().toString().padStart(2, '0');
+  const Hour = date.getHours().toString().padStart(2, "0");
+  const Minutes = date.getMinutes().toString().padStart(2, "0");
   const Time = `${Hour}:${Minutes}`;
-  const Day = date.getDay(); 
-  const Month = date.getMonth(); 
+  const Day = date.getDay();
+  const Month = date.getMonth();
   const Year = date.getFullYear();
 
-  const weekdays = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+  const weekdays = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ];
   const weekdayName = weekdays[Day];
 
-  const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+  const months = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ];
   const monthName = months[Month];
 
   console.log(weatherData);
@@ -52,6 +77,14 @@ const Weather = () => {
     wind: { speed },
   } = weatherData;
 
+  const { description: weatherDescription } = weather[0];
+
+  const description = weatherDescription;
+
+  const formattemp = Math.floor(temp);
+  const formattempmin = Math.floor(temp_min);
+  const formattempmax = Math.floor(temp_max);
+
   return (
     <div>
       <header className="mt-10 flex justify-around">
@@ -64,17 +97,42 @@ const Weather = () => {
           id="Search"
         />
       </header>
-      <div className="text-white">
-        <p>{Time}</p>
-        <p>Data: {weekdayName}, {date.getDate()} de {monthName} de {Year}</p>
-        <p>Cidade: {name}</p>
-        <p>Temperatura: {temp} °C</p>
-        <p>Temperatura Mínima: {temp_min} °C</p>
-        <p>Temperatura Máxima: {temp_max} °C</p>
-        <p>Umidade: {humidity} %</p>
-        <p>Nuvens: {all}%</p>
-        <p>Vento: {speed} m/s</p>
-        <p>Descrição: {weather[0].description}</p>{" "}
+      <div
+        style={{ backgroundImage: `url(${bg_clody_night})` }}
+        className="mx-5 h-[334px] rounded-lg"
+      >
+        <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
+          <p className="text-2xl font-semibold">{name}, PB</p>
+          <p className="font-semibold">{Time}</p>
+        </div>
+        <div className="mx-5 flex text-gray-200">
+          <p>{weekdayName},</p>
+          <p>{Day}</p>
+          <p>
+            de {monthName}
+            <span></span>
+          </p>
+          <p>de {Year}</p>
+        </div>
+        <main className="gap- mx-5 mt-28 flex items-center justify-between">
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold text-white">{formattemp}°c</h1>
+            <div className="mt-2 flex font-medium text-white">
+              <p>{formattempmin}°c /</p>
+              <p>{formattempmax}°c</p>
+            </div>
+            <div>
+              <p className="font-normal text-white">{description}</p>
+            </div>
+          </div>
+          <div className="flex-1">
+            <img
+              src={cloudy_night}
+              alt="cloudy night"
+              className="ml-8 h-auto w-full"
+            />
+          </div>
+        </main>
       </div>
     </div>
   );

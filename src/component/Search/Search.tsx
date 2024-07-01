@@ -14,16 +14,17 @@ const Search = () => {
 
   const { setWeatherData } = useContext(Context);
 
-  const handleclick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleclick = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
     e.preventDefault();
     setLoading(true);
-
 
     try {
       const getWeather: Climate[] = await Weatherapi(search);
       setWeatherData(getWeather);
       setLoading(false);
-      navigate('/Weather');
+      navigate("/Weather");
     } catch (error) {
       console.error("Erro ao buscar o clima:", error);
       setError("Não temos previsão para sua cidade");
@@ -40,8 +41,10 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
           id="Search"
         />
-        <div className="mt-10 flex items-center flex-col justify-center lg:mt-20">
-          {error && <p className="text-red-600 font-bold text-base pb-10">{error}</p>}
+        <div className="mt-10 flex flex-col items-center justify-center lg:mt-20">
+          {error && (
+            <p className="pb-10 text-base font-bold text-red-600">{error}</p>
+          )}
           <button
             onClick={handleclick}
             className="rounded-full bg-indigo-500 px-24 py-3 font-bold text-white shadow-lg shadow-indigo-500/50 hover:animate-pulse hover:brightness-110 lg:px-32"
