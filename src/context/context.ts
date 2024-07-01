@@ -8,19 +8,36 @@ export type Climate = {
     temp_min: number;
     temp_max: number;
     humidity: number;
+    feels_like: number; 
+    grnd_level: number; 
+    pressure: number; 
+    sea_level: number; 
   };
   sys:{
     country: string
-  }
+  };
   weather: {
     description: string;
+    id: number;
+    main: string;
+    icon: string;
   }[];
   clouds: {
     all: number;
   };
   wind: {
     speed: number;
+    deg: number; 
+    gust: number;
   };
+  coord: {
+    lat: number;
+    lon: number;
+  };
+  sunrise: number;
+  sunset: number;
+  timezone: number;
+  visibility: number;
 };
 
 export type City = {
@@ -33,6 +50,7 @@ export interface ContextType {
   cities: City[];
   setCities: Dispatch<SetStateAction<City[]>>;
   setWeatherData: Dispatch<SetStateAction<Climate[]>>;
+  
 }
 
 const initialContext: ContextType = {
