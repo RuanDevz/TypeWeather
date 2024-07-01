@@ -73,11 +73,14 @@ const Weather = () => {
     name,
     main: { temp, temp_min, temp_max, humidity },
     weather,
+    sys,
     clouds: { all },
     wind: { speed },
   } = weatherData;
 
   const { description: weatherDescription } = weather[0];
+const locale = sys.country
+
 
   const description = weatherDescription;
 
@@ -102,7 +105,7 @@ const Weather = () => {
         className="mx-5 h-[334px] rounded-lg"
       >
         <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
-          <p className="text-2xl font-semibold">{name}, PB</p>
+          <p className="text-2xl font-semibold">{name}, {locale}</p>
           <p className="font-semibold">{Time}</p>
         </div>
         <div className="mx-5 flex text-gray-200">

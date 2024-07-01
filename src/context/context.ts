@@ -9,6 +9,9 @@ export type Climate = {
     temp_max: number;
     humidity: number;
   };
+  sys:{
+    country: string
+  }
   weather: {
     description: string;
   }[];
