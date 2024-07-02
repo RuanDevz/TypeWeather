@@ -23,6 +23,7 @@ const Search = () => {
     try {
       const getWeather: Climate[] = await Weatherapi(search);
       setWeatherData(getWeather);
+      console.log(getWeather)
       setLoading(false);
       navigate("/Weather");
     } catch (error) {
