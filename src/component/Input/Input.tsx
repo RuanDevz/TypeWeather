@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import Context from "../../context/context";
+import React, { useContext, useState } from "react";
+import Context, { ContextType } from "../../context/context";
 
 type InputProps = {
   id: string;
@@ -9,16 +9,16 @@ type InputProps = {
 };
 
 const Input = ({ id, onChange, value, placeholder }: InputProps) => {
-  const [inputValue, setInputValue] = useState(value);
+  const { inputValue, setInputValue } = useContext<ContextType>(Context);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const { cities } = useContext(Context);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setInputValue(value);
+    setInputValue(value); 
 
     const filteredCities = cities.filter((city) =>
-      city.nome.toLowerCase().includes(value.toLowerCase()),
+      city.nome.toLowerCase().includes(value.toLowerCase())
     );
 
     setSuggestions(filteredCities.map((city) => city.nome));
@@ -26,7 +26,7 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
   };
 
   const handleSuggestionClick = (value: string) => {
-    setInputValue(value);
+    setInputValue(value); // Atualiza inputValue globalmente
     setSuggestions([]);
   };
 

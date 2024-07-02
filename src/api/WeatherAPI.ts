@@ -1,3 +1,4 @@
+// WeatherAPI.ts
 import axios from "axios";
 
 export const Weatherapi = (city: string) => {
@@ -18,3 +19,6 @@ export const Weatherapi = (city: string) => {
       throw error;
     });
 };
+
+// Função para obter sugestões de cidades
+

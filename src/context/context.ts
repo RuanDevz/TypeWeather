@@ -1,4 +1,3 @@
-// context.ts
 import { createContext, Dispatch, SetStateAction } from "react";
 
 export type Climate = {
@@ -45,12 +44,14 @@ export type City = {
   nome: string; 
   country: string;
 }
+
 export interface ContextType {
   weatherData: Climate[];
   cities: City[];
   setCities: Dispatch<SetStateAction<City[]>>;
   setWeatherData: Dispatch<SetStateAction<Climate[]>>;
-  
+  inputValue: string;
+  setInputValue: Dispatch<SetStateAction<string>>;
 }
 
 const initialContext: ContextType = {
@@ -58,8 +59,10 @@ const initialContext: ContextType = {
   cities: [],
   setCities: () => {},
   setWeatherData: () => {},
+  inputValue: "", 
+  setInputValue: () => {}, 
 };
 
-export const Context = createContext<ContextType>(initialContext);
+const Context = createContext<ContextType>(initialContext);
 
 export default Context;

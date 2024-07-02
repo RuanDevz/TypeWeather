@@ -1,5 +1,6 @@
 // Search.tsx
 import React, { useContext, useState, useEffect } from "react";
+import { ContextType } from "../../context/context";
 import Input from "../Input/Input";
 import { Weatherapi } from "../../api/WeatherAPI";
 import Error from "../Error/Error";
@@ -7,13 +8,16 @@ import { useNavigate } from "react-router-dom";
 import Context, { Climate } from "../../context/context";
 
 const Search = () => {
-  const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const { inputValue, setInputValue } = useContext<ContextType>(Context);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { setWeatherData } = useContext(Context);
-
+  
+  useEffect(() =>{
+    console.log(inputValue)
+  },[])
   const handleclick = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
@@ -21,7 +25,7 @@ const Search = () => {
     setLoading(true);
 
     try {
-      const getWeather: Climate[] = await Weatherapi(search);
+      const getWeather: Climate[] = await Weatherapi(inputValue);
       setWeatherData(getWeather);
       console.log(getWeather)
       setLoading(false);
@@ -38,8 +42,8 @@ const Search = () => {
       <form className="mt-14">
         <Input
           placeholder="Buscar Local"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           id="Search"
         />
         <div className="mt-10 flex flex-col items-center justify-center lg:mt-20">

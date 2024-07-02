@@ -14,9 +14,10 @@ import Footer from "./component/Footer/Footer";
 const App = () => {
   const [cities, setCities] = useState<City[]>([]);
   const [weatherData, setWeatherData] = useState<Climate[]>([]);
+  const [inputValue, setInputValue] = useState('');
 
   return (
-    <Context.Provider value={{ cities, setCities, weatherData, setWeatherData }}>
+    <Context.Provider value={{ cities, setCities, weatherData, setWeatherData,inputValue, setInputValue }}>
       <Router>
         <Routes>
           <Route path="/" element={<Dashboard />} />
