@@ -10,6 +10,8 @@ import { url } from "inspector";
 import WeatherHeader from "./WeatherHeader";
 import WeatherPrimary from "./WeatherPrimary";
 import WeatherSegundary from "./WeatherSegundary";
+import Footer from "../Footer/Footer";
+
 
 const Weather = () => {
   return (
@@ -21,6 +23,7 @@ const Weather = () => {
       <div>
         <WeatherSegundary />
       </div>
+      <Footer/>
     </div>
   );
 };

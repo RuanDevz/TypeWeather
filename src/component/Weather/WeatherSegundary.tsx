@@ -46,7 +46,7 @@ const WeatherSegundary = () => {
     },
     {
       img: Chuva,
-      description: "Probabilidade de chuva",
+      description: "Nuvens",
       value: `${rain}%`,
     },
     {
@@ -58,11 +58,6 @@ const WeatherSegundary = () => {
       img: Umidade,
       description: "Umidade do ar",
       value: `${humidity}%`,
-    },
-    {
-      img: IndiceUV,
-      description: "Indice UV",
-      value: '3', 
     },
   ];
 

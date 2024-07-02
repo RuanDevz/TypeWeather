@@ -1,13 +1,24 @@
 import React, { useContext } from "react";
-import { Input } from "@chakra-ui/react";
-import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
 import Loading from "../../component/Loading/Loading";
-import bg_clear_day from "../../assets/img/bg_clear_day.png";
 import bg_clody_night from "../../assets/img/bg_cloudy_night.png";
 import cloudy_night from "../../assets/svg/cloudy_night.svg";
-import { url } from "inspector";
-import WeatherHeader from "./WeatherHeader";
+import bg_clear_day from '../../assets/img/bg_clear_day.png'
+import bg_clear_night from '../../assets/img/bg_clear_night.png'
+import bg_cloudy_day from '../../assets/img/bg_cloudy_day.png'
+import bg_cloudy_night from '../../assets/img/bg_cloudy_night.png'
+import bg_few_clouds_day from '../../assets/img/bg_few_clouds_day.png'
+import bg_few_clouds_night from '../../assets/img/bg_few_clouds_night.png'
+import bg_rain_day from '../../assets/img/bg_rain_day.png'
+import bg_rain_night from '../../assets/img/bg_rain_night.png'
+
+
+
+
+
+
+
+
 
 const WeatherPrimary = () => {
     const isClimate = (data: any): data is Climate => {
@@ -108,11 +119,10 @@ const WeatherPrimary = () => {
           <div className="flex-1">
             <h1 className="text-4xl font-bold text-white">{formattemp}°c</h1>
             <div className="mt-2 flex font-medium text-white">
-              <p>{formattempmin}°c /</p>
-              <p>{formattempmax}°c</p>
+              <p>{formattempmin}°c / {formattempmax}°c </p>
             </div>
             <div>
-              <p className="font-normal text-white">{description}</p>
+              <p className="font-medium text-white mt-1">{description.charAt(0).toUpperCase() + description.slice(1).toLowerCase()}</p>
             </div>
           </div>
           <div className="flex-1">
