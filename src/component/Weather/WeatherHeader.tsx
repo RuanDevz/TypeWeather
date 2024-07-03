@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Input } from "@chakra-ui/react";
 import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
-import { Weatherapi } from "../../api/WeatherAPI";
+import { WeatherApi } from "../../api/WeatherAPI";
 import { FaSearch } from "react-icons/fa";
 import Loading from "../../component/Loading/Loading";
 
@@ -17,7 +17,7 @@ const WeatherHeader = () => {
     setLoading(true);
 
     try {
-      const getWeather: Climate[] = await Weatherapi(input);
+      const getWeather: Climate[] = await WeatherApi(input);
       setWeatherData(getWeather);
       console.log(getWeather);
       setLoading(false);

@@ -12,9 +12,9 @@ export type Climate = {
     pressure: number; 
     sea_level: number; 
   };
-  sys:{
-    country: string,
-    type: number
+  sys: {
+    country: string;
+    type: number;
   };
   weather: {
     description: string;
@@ -40,11 +40,16 @@ export type Climate = {
   visibility: number;
 };
 
+export type Cordenates = {
+  lat: number;
+  lon: number;
+};
+
 export type City = {
   id: number;
   nome: string; 
   country: string;
-}
+};
 
 export interface ContextType {
   weatherData: Climate[];
@@ -53,15 +58,23 @@ export interface ContextType {
   setWeatherData: Dispatch<SetStateAction<Climate[]>>;
   inputValue: string;
   setInputValue: Dispatch<SetStateAction<string>>;
+  getCordenates: Cordenates[];
+  setGetCordenates: Dispatch<SetStateAction<Cordenates[]>>;
+  forecastData: any[]; 
+  setForecastData: Dispatch<SetStateAction<any[]>>;
 }
 
 const initialContext: ContextType = {
   weatherData: [],
   cities: [],
+  getCordenates: [],
   setCities: () => {},
   setWeatherData: () => {},
   inputValue: "", 
   setInputValue: () => {}, 
+  setGetCordenates: () => {},
+  forecastData: [],
+  setForecastData: () => {}, 
 };
 
 const Context = createContext<ContextType>(initialContext);

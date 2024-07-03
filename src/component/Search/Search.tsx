@@ -1,34 +1,45 @@
-// Search.tsx
 import React, { useContext, useState, useEffect } from "react";
-import { ContextType } from "../../context/context";
+import { ContextType, Cordenates } from "../../context/context";
 import Input from "../Input/Input";
-import { Weatherapi } from "../../api/WeatherAPI";
+import { WeatherApi, GetCoordinates, FiveDaysForecast } from "../../api/WeatherAPI";
 import Error from "../Error/Error";
 import { useNavigate } from "react-router-dom";
 import Context, { Climate } from "../../context/context";
-
 
 const Search = () => {
   const [loading, setLoading] = useState(false);
   const { inputValue, setInputValue } = useContext<ContextType>(Context);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const { setWeatherData } = useContext(Context);
+  const { getCordenates, setGetCordenates } = useContext(Context);
+  const { setWeatherData, setForecastData } = useContext(Context); 
   
-  useEffect(() =>{
-    console.log(inputValue)
-  },[])
-  const handleclick = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
+
+  const handleclick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const getWeather: Climate[] = await Weatherapi(inputValue);
-      setWeatherData(getWeather);
-      console.log(getWeather)
+      const coordinates: [Cordenates] = await GetCoordinates(inputValue);
+      setGetCordenates(coordinates);
+      console.log(getCordenates);
+
+      if (coordinates.length > 0) {
+        const { lat, lon } = coordinates[0];
+        const forecast = await FiveDaysForecast(lat, lon);
+        setForecastData(forecast);
+        console.log(forecast);
+      } else {
+        console.log("nenhuma cordenada encontrada")
+      }
+
+      const weatherData: Climate[] = await WeatherApi(inputValue);
+      setWeatherData(weatherData);
+      console.log(weatherData);
+
       setLoading(false);
       navigate("/Weather");
     } catch (error) {
