@@ -19,7 +19,7 @@ export const FiveDaysForecast = async (lat: number, lon: number) => {
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=5&appid=${import.meta.env.VITE_API_KEY}&lang=pt`
     );
-    return response.data;
+    return response.data.list
   } catch (error) {
     console.error("Erro ao obter previsão de 5 dias:", error);
     throw error;
