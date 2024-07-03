@@ -3,7 +3,7 @@ import Temperatura from "../../assets/svg/Temperatura.svg";
 import Chuva from "../../assets/svg/Chuva.png";
 import Vento from "../../assets/svg/Vento.svg";
 import Umidade from "../../assets/svg/Agua.svg";
-import IndiceUV from "../../assets/svg/Sol.svg";
+import Sol from "../../assets/svg/Sol.svg";
 import Context, { Climate } from "../../context/context";
 
 const isClimate = (data: any): data is Climate => {
@@ -31,12 +31,15 @@ const WeatherSegundary = () => {
   }
 
   const {
-    name,
-    main: { temp, humidity },
-    weather,
+    main: { temp, temp_max, temp_min, humidity },
     clouds: { all: rain },
-    wind: { speed: windSpeed},
+    wind: { speed: windSpeed },
+    sys,
+    name,
   } = weatherData;
+
+
+  const IndiceUV = 3; 
 
   const Climateinformations = [
     {
@@ -59,24 +62,36 @@ const WeatherSegundary = () => {
       description: "Umidade do ar",
       value: `${humidity}%`,
     },
+    {
+      img: Sol,
+      description: "Índice UV",
+      value: `${IndiceUV}`,
+    },
   ];
 
   return (
-    <div className="mx-3 mt-10 rounded-lg bg-[#16161F]">
+    <div className="mx-3 mt-10 h-full rounded-lg bg-[#16161F] lg:mt-0 lg:w-[500px]">
       <section>
+        <p className="pt-3 text-center font-primary text-base font-semibold text-[#696969] lg:text-2xl">
+          Detalhes do clima de hoje
+        </p>
         <div className="flex flex-col items-start">
           {Climateinformations.map((info, index) => (
             <div
-              className="mx-3 py-4 flex items-center justify-between border-b-2 border-[#60606013] w-full"
+              className="mx-3 flex w-full items-center justify-between border-b-2 border-[#60606013] py-4"
               key={index}
             >
-              <div className="flex justify-between w-full">
+              <div className="flex w-full justify-between py-3 lg:py-6">
                 <div className="flex items-center gap-3">
-                  <img src={info.img} alt={info.description} />
-                  <p className="text-white">{info.description}</p>
+                  <img
+                    className="w[32px] h-[32px]"
+                    src={info.img}
+                    alt={info.description}
+                  />
+                  <p className="text-white lg:text-xl">{info.description}</p>
                 </div>
                 <div className="flex items-center">
-                  <p className="text-white mr-6">{info.value}</p>
+                  <p className="mr-6 text-white lg:text-xl">{info.value}</p>
                 </div>
               </div>
             </div>

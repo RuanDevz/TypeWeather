@@ -4,7 +4,7 @@ import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate } from "../../context/context";
 import { Weatherapi } from "../../api/WeatherAPI";
 import { FaSearch } from "react-icons/fa";
-import Loading from '../../component/Loading/Loading'
+import Loading from "../../component/Loading/Loading";
 
 const WeatherHeader = () => {
   const [input, setInput] = useState("");
@@ -30,7 +30,7 @@ const WeatherHeader = () => {
 
   return (
     <div>
-      {loading && <Loading>Previsões</Loading> }
+      {loading && <Loading>Previsões</Loading>}
       <header className="relative flex justify-around pt-10 font-primary">
         <div className="mx-2 rounded-lg bg-[#1E1E29] p-5">
           <img className="w-7" src={logo} alt="logo" />
@@ -42,7 +42,10 @@ const WeatherHeader = () => {
           onChange={(e) => setInput(e.target.value)}
         />
         <div className="absolute right-0 mr-6 mt-5 flex items-center text-xl text-white">
-          <FaSearch onClick={handleclick} className="text-[#8FB2F5]" />
+          <FaSearch
+            onClick={handleclick}
+            className="lg: mr-7 cursor-pointer text-[#8FB2F5]"
+          />
         </div>
       </header>
     </div>

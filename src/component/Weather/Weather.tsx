@@ -12,18 +12,16 @@ import WeatherPrimary from "./WeatherPrimary";
 import WeatherSegundary from "./WeatherSegundary";
 import Footer from "../Footer/Footer";
 
-
 const Weather = () => {
   return (
-    <div>
+    <div className="flex flex-col lg:mt-10 lg:flex lg:flex-row h-full justify-around bg-[#131319]">
       <div className="mx-3 rounded-lg bg-[#16161F] pb-5">
-      <WeatherHeader />
-      <WeatherPrimary />
+        <WeatherHeader />
+        <WeatherPrimary />
       </div>
       <div>
         <WeatherSegundary />
       </div>
-      <Footer/>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Error from "../Error/Error";
 import { useNavigate } from "react-router-dom";
 import Context, { Climate } from "../../context/context";
 
+
 const Search = () => {
   const [loading, setLoading] = useState(false);
   const { inputValue, setInputValue } = useContext<ContextType>(Context);

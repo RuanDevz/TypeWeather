@@ -6,6 +6,7 @@ import Context from "../../context/context";
 import { Cityapi } from "../../api/CityApi";
 import { useNavigate } from "react-router-dom";
 import Loading from '../Loading/Loading'
+import backgroundprincipal from '../../assets/img/bg.png'
 
 const Dashboard = () => {
   const {setCities } = useContext(Context);
@@ -29,7 +30,7 @@ const Dashboard = () => {
   }, [setCities]);
 
   return (
-    <div className="mt-0 lg:mt-20">
+    <div style={{backgroundImage: `url(${backgroundprincipal})`}} className="mt-0 w-full h-screen lg:mt-20 ">
       <Header />
       <div className="mt-40 flex flex-col items-center justify-center">
         {loading && <Loading>Cidades</Loading>}

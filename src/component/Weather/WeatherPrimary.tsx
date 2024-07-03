@@ -123,10 +123,10 @@ const WeatherPrimary = () => {
   };
 
   return (
-    <div>
+    <div className="lg:w-[700px]">
       <div
         style={{ backgroundImage: `url(${getBackgroundImage()})` }}
-        className="mx-5 h-full rounded-lg"
+        className="mx-5 h-full rounded-lg lg:w-[550px] lg:mx-auto"
       >
         <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
           <p className="text-2xl font-semibold">

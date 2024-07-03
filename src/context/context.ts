@@ -13,7 +13,8 @@ export type Climate = {
     sea_level: number; 
   };
   sys:{
-    country: string
+    country: string,
+    type: number
   };
   weather: {
     description: string;
