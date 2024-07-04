@@ -44,12 +44,12 @@ const WeatherForecast = () => {
   };
 
   return (
-    <div className="mt-5 rounded-lg bg-[#16161F]">
+    <div className="mt-5 rounded-lg bg-[#16161F] lg:px-5 2xl:pb-10">
       <div>
         {!isMobile ? (
           <p className="p-5 text-xl text-[#696969]">Previsão para 5 dias</p>
         ) : null}
-        <div className="flex justify-around p-3 lg:w-[900px]">
+        <div className="flex justify-around p-3 2xl:w-[800px]">
           {forecastData.map((day, index) => (
             <div className="flex flex-col items-center" key={index}>
               <p className="font-medium text-[#606060]">
@@ -61,7 +61,7 @@ const WeatherForecast = () => {
                 alt={day.weather[0].main}
               />
               {!isMobile ? (
-                <p className="pb-2 text-sm font-medium lg:text-gray-400">
+                <p className="pb-2 text-center text-sm font-medium text-gray-400">
                   {day.weather[0].description}
                 </p>
               ) : null}

@@ -126,14 +126,14 @@ const WeatherPrimary = () => {
   };
 
   return (
-    <div className="lg:w-[700px]">
+    <div className="2xl:w-[700px] lg:w-[90%] mx-auto">
       <div
         style={{
           backgroundImage: `url(${getBackgroundImage()})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",
         }}
-        className="mx-5 rounded-lg lg:mx-auto lg:w-[750px]"
+        className="mx-5 rounded-lg lg:mx-auto lg:full"
       >
         <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
           <p className="text-2xl font-semibold">
@@ -146,8 +146,8 @@ const WeatherPrimary = () => {
             {weekdayName}, {Day} de {monthName} de {Year}
           </p>
         </div>
-        <main className="gap- mx-5 mt-28 flex items-center justify-between lg:mt-64">
-          <div className="flex-1 lg:mt-32">
+        <main className="gap- mx-5 mt-28 flex items-center justify-between lg:mt-64 2xl:mt-64">
+          <div className="flex-1 2xl:mt-32">
             <h1 className="text-4xl font-bold text-white lg:text-[100px]">
               {formattemp}°c
             </h1>

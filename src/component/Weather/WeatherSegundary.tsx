@@ -71,7 +71,7 @@ const WeatherSegundary = () => {
   ];
 
   return (
-    <div className="mt-10 h-full rounded-lg bg-[#16161F] lg:mt-0 lg:w-full">
+    <div className="mt-10  rounded-lg bg-[#16161F] lg:mt-0 lg:w-full ">
       <section>
         {!isMobile ? (
           <p className="p-5 text-xl text-[#696969]">
@@ -81,7 +81,7 @@ const WeatherSegundary = () => {
         <div className="flex flex-col items-start">
           {Climateinformations.map((info, index) => (
             <div
-              className="mx-3 flex w-full items-center justify-between border-b-2 border-[#60606013] py-4"
+              className="mx-3 flex w-full items-center justify-between border-b-2 border-[#60606013] py-2"
               key={index}
             >
               <div className="flex w-full justify-between py-3 lg:mr-5">
