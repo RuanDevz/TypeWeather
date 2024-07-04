@@ -30,7 +30,7 @@ const WeatherSegundary = () => {
     return <div>Dados climáticos inválidos ou não disponíveis</div>;
   }
 
-  const isMobile = window.innerWidth < 768
+  const isMobile = window.innerWidth < 768;
 
   const {
     main: { temp, temp_max, temp_min, humidity },
@@ -71,20 +71,20 @@ const WeatherSegundary = () => {
   ];
 
   return (
-    <div className="mx-3 mt-10 h-full rounded-lg bg-[#16161F] lg:mt-0 lg:w-full">
+    <div className="mt-10 h-full rounded-lg bg-[#16161F] lg:mt-0 lg:w-full">
       <section>
-        {!isMobile ?         <p className="text-[#696969] text-xl p-5">
-          Detalhes do clima de hoje
-        </p>:(
-          null
-        )}
+        {!isMobile ? (
+          <p className="p-5 text-xl text-[#696969]">
+            Detalhes do clima de hoje
+          </p>
+        ) : null}
         <div className="flex flex-col items-start">
           {Climateinformations.map((info, index) => (
             <div
               className="mx-3 flex w-full items-center justify-between border-b-2 border-[#60606013] py-4"
               key={index}
             >
-              <div className="flex w-full justify-between py-3 lg:mr-5 lg:p-5">
+              <div className="flex w-full justify-between py-3 lg:mr-5">
                 <div className="flex items-center gap-3">
                   <img
                     className="w[32px] h-[32px]"

@@ -44,12 +44,12 @@ const WeatherForecast = () => {
   };
 
   return (
-    <div className="mx-3 mt-5 rounded-lg bg-[#16161F]">
+    <div className="mt-5 rounded-lg bg-[#16161F]">
       <div>
         {!isMobile ? (
           <p className="p-5 text-xl text-[#696969]">Previsão para 5 dias</p>
         ) : null}
-        <div className="flex justify-around  p-3 lg:w-[900px]">
+        <div className="flex justify-around p-3 lg:w-[900px]">
           {forecastData.map((day, index) => (
             <div className="flex flex-col items-center" key={index}>
               <p className="font-medium text-[#606060]">
@@ -60,12 +60,19 @@ const WeatherForecast = () => {
                 src={getWeatherIcon(day.weather[0].main)}
                 alt={day.weather[0].main}
               />
-              <p className="text-sm font-semibold text-white">
-                {formatTemperature(day.main.temp_max)}°C
-              </p>
-              <p className="text-sm font-semibold text-gray-400">
-                {formatTemperature(day.main.temp_min)}°C
-              </p>
+              {!isMobile ? (
+                <p className="pb-2 text-sm font-medium lg:text-gray-400">
+                  {day.weather[0].description}
+                </p>
+              ) : null}
+              <div className="flex flex-col gap-3 lg:flex-row">
+                <p className="text-sm font-semibold text-white">
+                  {formatTemperature(day.main.temp_max)}°C
+                </p>
+                <p className="text-sm font-semibold text-gray-400">
+                  {formatTemperature(day.main.temp_min)}°C
+                </p>
+              </div>
             </div>
           ))}
         </div>

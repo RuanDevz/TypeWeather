@@ -88,9 +88,12 @@ const WeatherPrimary = () => {
   const { description: weatherDescription, main: weatherMain } = weather[0];
   const locale = sys.country;
 
+  console.log(weatherData)
+
   const formattemp = Math.floor(temp);
   const formattempmin = Math.floor(temp_min);
   const formattempmax = Math.floor(temp_max);
+  
 
   const isDayTime = Hour >= 6 && Hour < 18;
 
@@ -130,7 +133,7 @@ const WeatherPrimary = () => {
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%",
         }}
-        className="mx-5 rounded-lg lg:mx-auto lg:w-[632px]"
+        className="mx-5 rounded-lg lg:mx-auto lg:w-[750px]"
       >
         <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
           <p className="text-2xl font-semibold">
@@ -144,7 +147,7 @@ const WeatherPrimary = () => {
           </p>
         </div>
         <main className="gap- mx-5 mt-28 flex items-center justify-between lg:mt-64">
-          <div className="flex-1">
+          <div className="flex-1 lg:mt-32">
             <h1 className="text-4xl font-bold text-white lg:text-[100px]">
               {formattemp}°c
             </h1>

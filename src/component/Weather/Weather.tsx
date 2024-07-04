@@ -20,7 +20,7 @@ const Weather = () => {
         <WeatherHeader />
         <WeatherPrimary />
       </div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col lg:w-[900px] ">
         <WeatherSegundary />
         <WeatherForecast />
       </div>
