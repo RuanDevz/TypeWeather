@@ -15,10 +15,10 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    setInputValue(value); 
+    setInputValue(value);
 
     const filteredCities = cities.filter((city) =>
-      city.nome.toLowerCase().includes(value.toLowerCase())
+      city.nome.toLowerCase().includes(value.toLowerCase()),
     );
 
     setSuggestions(filteredCities.map((city) => city.nome));
@@ -26,7 +26,7 @@ const Input = ({ id, onChange, value, placeholder }: InputProps) => {
   };
 
   const handleSuggestionClick = (value: string) => {
-    setInputValue(value); // Atualiza inputValue globalmente
+    setInputValue(value);
     setSuggestions([]);
   };
 

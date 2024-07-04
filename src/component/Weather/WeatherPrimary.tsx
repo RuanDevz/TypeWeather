@@ -125,8 +125,12 @@ const WeatherPrimary = () => {
   return (
     <div className="lg:w-[700px]">
       <div
-        style={{ backgroundImage: `url(${getBackgroundImage()})` }}
-        className="mx-5 h-full rounded-lg lg:w-[550px] lg:mx-auto"
+        style={{
+          backgroundImage: `url(${getBackgroundImage()})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
+        }}
+        className="mx-5 rounded-lg lg:mx-auto lg:w-[632px]"
       >
         <div className="mx-5 mt-12 flex items-center justify-between py-3 text-white">
           <p className="text-2xl font-semibold">
@@ -139,19 +143,23 @@ const WeatherPrimary = () => {
             {weekdayName}, {Day} de {monthName} de {Year}
           </p>
         </div>
-        <main className="gap- mx-5 mt-28 flex items-center justify-between">
+        <main className="gap- mx-5 mt-28 flex items-center justify-between lg:mt-64">
           <div className="flex-1">
-            <h1 className="text-4xl font-bold text-white">{formattemp}°c</h1>
-            <div className="mt-2 flex font-medium text-white">
-              <p>
-                {formattempmin}°c / {formattempmax}°c{" "}
-              </p>
-            </div>
-            <div>
-              <p className="mt-1 font-medium text-white">
-                {weatherDescription.charAt(0).toUpperCase() +
-                  weatherDescription.slice(1).toLowerCase()}
-              </p>
+            <h1 className="text-4xl font-bold text-white lg:text-[100px]">
+              {formattemp}°c
+            </h1>
+            <div className="items-center gap-5 lg:mt-14 lg:flex lg:text-2xl">
+              <div className="mt-2 flex font-medium text-white">
+                <p>
+                  {formattempmin}°c / {formattempmax}°c{" "}
+                </p>
+              </div>
+              <div>
+                <p className="mt-1 font-medium text-white lg:text-xl lg:font-normal lg:text-gray-300">
+                  {weatherDescription.charAt(0).toUpperCase() +
+                    weatherDescription.slice(1).toLowerCase()}
+                </p>
+              </div>
             </div>
           </div>
           <div className="flex-1">

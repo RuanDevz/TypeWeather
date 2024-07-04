@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import Weather from "./component/Weather/Weather";
-import Context, { City, Climate, Cordenates, ContextType } from "./context/context";
+import Context, {
+  City,
+  Climate,
+  Cordenates,
+  ContextType,
+} from "./context/context";
 import Footer from "./component/Footer/Footer";
 
 const App = () => {
   const [cities, setCities] = useState<City[]>([]);
   const [weatherData, setWeatherData] = useState<Climate[]>([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [getCordenates, setGetCordenates] = useState<Cordenates[]>([]);
   const [forecastData, setForecastData] = useState<any[]>([]);
 

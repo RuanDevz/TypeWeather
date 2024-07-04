@@ -15,14 +15,14 @@ import WeatherForecast from "./WeatherForecast";
 
 const Weather = () => {
   return (
-    <div className="flex flex-col lg:mt-10 lg:flex lg:flex-row h-full justify-around bg-[#131319]">
-      <div className="mx-3 rounded-lg bg-[#16161F] pb-5">
+    <div className="flex flex-col justify-around bg-[#131319] lg:mt-10 lg:flex lg:flex-row">
+      <div className="lg:w-[700px]">
         <WeatherHeader />
         <WeatherPrimary />
       </div>
-      <div>
+      <div className="flex flex-col ">
         <WeatherSegundary />
-        <WeatherForecast/>
+        <WeatherForecast />
       </div>
     </div>
   );

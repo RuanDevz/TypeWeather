@@ -14,8 +14,9 @@ const WeatherForecast = () => {
   const date = new Date();
   const Day = date.getDay();
   const hour = date.getHours();
-  const isDayTime = hour >= 6 && hour < 18; 
+  const isDayTime = hour >= 6 && hour < 18;
 
+  const isMobile = window.innerWidth < 768;
   const { forecastData } = useContext(Context);
 
   const getWeatherIcon = (weatherMain: any) => {
@@ -36,9 +37,8 @@ const WeatherForecast = () => {
   };
 
   const formatTemperature = (tempKelvin: number) => {
-    // Converter Kelvin para Celsius
     const tempCelsius = tempKelvin - 273.15;
-    // Arredondar para o número inteiro mais próximo
+
     const integerPart = Math.round(tempCelsius);
     return integerPart.toString();
   };
@@ -46,14 +46,17 @@ const WeatherForecast = () => {
   return (
     <div className="mx-3 mt-5 rounded-lg bg-[#16161F]">
       <div>
-        <div className="flex justify-around p-3">
+        {!isMobile ? (
+          <p className="p-5 text-xl text-[#696969]">Previsão para 5 dias</p>
+        ) : null}
+        <div className="flex justify-around  p-3 lg:w-[900px]">
           {forecastData.map((day, index) => (
             <div className="flex flex-col items-center" key={index}>
               <p className="font-medium text-[#606060]">
                 {weekday[(Day + index) % 7]}
               </p>
               <img
-                className="w-52"
+                className="w-20 lg:w-32"
                 src={getWeatherIcon(day.weather[0].main)}
                 alt={day.weather[0].main}
               />
