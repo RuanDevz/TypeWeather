@@ -35,10 +35,12 @@ const WeatherForecast = () => {
     }
   };
 
-  // Função para formatar a temperatura (parte inteira)
-  const formatTemperature = (temp: number) => {
-    const integerPart = Math.floor(temp).toString();
-    return integerPart.slice(0, 2);
+  const formatTemperature = (tempKelvin: number) => {
+    // Converter Kelvin para Celsius
+    const tempCelsius = tempKelvin - 273.15;
+    // Arredondar para o número inteiro mais próximo
+    const integerPart = Math.round(tempCelsius);
+    return integerPart.toString();
   };
 
   return (
