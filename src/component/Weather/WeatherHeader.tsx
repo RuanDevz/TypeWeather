@@ -59,9 +59,9 @@ const WeatherHeader = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <div className="absolute right-0 mr-6 mt-5 flex items-center text-xl text-white">
+        <div onClick={handleClick} className="absolute right-0 mr-6 mt-5 flex items-center text-xl text-white">
           <FaSearch
-            onClick={handleClick}
+            
             className="lg:mr-7 cursor-pointer text-[#8FB2F5]"
           />
         </div>

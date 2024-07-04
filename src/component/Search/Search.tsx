@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ContextType, Cordenates } from "../../context/context";
-import Input from "../Input/Input";
+import Input from '../../component/Input/Input'
 import { WeatherApi, GetCoordinates, FiveDaysForecast } from "../../api/WeatherAPI";
 import Error from "../Error/Error";
 import { useNavigate } from "react-router-dom";

@@ -11,6 +11,7 @@ import WeatherHeader from "./WeatherHeader";
 import WeatherPrimary from "./WeatherPrimary";
 import WeatherSegundary from "./WeatherSegundary";
 import Footer from "../Footer/Footer";
+import WeatherForecast from "./WeatherForecast";
 
 const Weather = () => {
   return (
@@ -21,6 +22,7 @@ const Weather = () => {
       </div>
       <div>
         <WeatherSegundary />
+        <WeatherForecast/>
       </div>
     </div>
   );
