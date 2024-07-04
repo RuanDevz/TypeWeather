@@ -58,11 +58,15 @@ npm run dev
 
 Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
 
-1.Fork o repositório.
-2.Crie uma branch com a nova funcionalidade ou correção de bug: git checkout -b minha-feature.
-3.Faça commit das suas alterações: git commit -m 'Minha nova feature'.
-4.Faça push para a branch: git push origin minha-feature.
-5.Abra um Pull Request.
+1. Fork o repositório.
+
+2. Crie uma branch com a nova funcionalidade ou correção de bug: git checkout -b minha-feature.
+
+3. Faça commit das suas alterações: git commit -m 'Minha nova feature'.
+
+4. Faça push para a branch: git push origin minha-feature.
+
+5. Abra um Pull Request.
 
 Deploy: https://type-weather-two.vercel.app/
 
