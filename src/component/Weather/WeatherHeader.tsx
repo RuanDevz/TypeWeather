@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import { Input } from "@chakra-ui/react";
 import logo from "../../assets/img/LogoWeather.png";
 import Context, { Climate, Cordenates } from "../../context/context";
-import { FiveDaysForecast, GetCoordinates, WeatherApi } from "../../api/WeatherAPI";
+import {
+  FiveDaysForecast,
+  GetCoordinates,
+  WeatherApi,
+} from "../../api/WeatherAPI";
 import { FaSearch } from "react-icons/fa";
 import Loading from "../../component/Loading/Loading";
 
@@ -10,9 +14,12 @@ const WeatherHeader = () => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { setWeatherData, setGetCordenates, setForecastData, inputValue } = useContext(Context);
+  const { setWeatherData, setGetCordenates, setForecastData, inputValue } =
+    useContext(Context);
 
-  const handleClick = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = async (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
     e.preventDefault();
     setLoading(true);
 
@@ -48,7 +55,7 @@ const WeatherHeader = () => {
   return (
     <div>
       {loading && <Loading>Carregando...</Loading>}
-      <header className="relative flex justify-around pt-10 font-primary lg:w-[590px] mx-auto 2xl:w-full ">
+      <header className="relative mx-auto flex justify-around pt-10 font-primary lg:w-[590px] 2xl:w-full">
         <div className="mx-2 rounded-lg bg-[#1E1E29] p-5">
           <img className="w-7" src={logo} alt="logo" />
         </div>
@@ -59,11 +66,11 @@ const WeatherHeader = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <div onClick={handleClick} className="absolute right-0 mr-6 mt-5 flex items-center text-xl text-white">
-          <FaSearch
-            
-            className="lg:mr-7 cursor-pointer text-[#8FB2F5]"
-          />
+        <div
+          onClick={handleClick}
+          className="absolute right-0 mr-6 mt-5 flex items-center text-xl text-white"
+        >
+          <FaSearch className="cursor-pointer text-[#8FB2F5]" />
         </div>
       </header>
     </div>
