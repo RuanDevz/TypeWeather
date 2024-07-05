@@ -54,7 +54,7 @@ const WeatherHeader = () => {
 
   return (
     <div>
-      {loading && <Loading>Carregando...</Loading>}
+      {loading && <Loading>Mais previsões...</Loading>}
       <header className="relative mx-auto flex justify-around pt-10 font-primary lg:w-[590px] 2xl:w-full">
         <div className="mx-2 rounded-lg bg-[#1E1E29] p-5">
           <img className="w-7" src={logo} alt="logo" />
